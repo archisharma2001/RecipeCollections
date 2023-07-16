@@ -1,0 +1,60 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>RECIPE|ADD</title>
+{% endblock %}
+{% block body %}
+<body background="/static/pictures/4.png" >
+<nav class="navbar navbar-expand-lg  " style=" background-color:#deb887; ">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark" href="#">Foodies</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-dark" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="/add/">Add</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-dark" href="/view/">View</a>
+        </li>
+        <li class="nav-item ">
+          <a href="/logout/"><button type=submit class="btn text-dark " >Logout</button></a>
+        </li>
+        </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search Food" name="search">
+        <button class="btn btn-outline-dark " type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+<div class="container mt-5">
+      <form class="col-6 mx-auto card p-3 bg-light" method="post" enctype="multipart/form-data" >
+      {% csrf_token %}
+        <div class="mb-3">
+        <h4 class="text-center "> Add Recipe </h4>
+          <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+          <input type="text"class="form-control " required name="recipe_name"/>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Recipe description</label>
+          <textarea type="text" class="form-control" required name="recipe_description"></textarea>
+        </div>
+       <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Import Image</label>
+          <input type="file" class="form-control" name="recipe_image"/>
+        </div>
+        <button type="submit" class="btn btn-success" >Add Recipe</button>
+      </form>
+
+</div>
+</body>
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>RECIPE|LOGIN</title>
+{% endblock %}
+{% block body %}
+<body background="/static/pictures/14.jpg"  >
+<nav class="navbar navbar-expand-lg  " style=" background-color:#9b111e; ">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="#">Foodies</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/add/">Add</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/view/">View</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/login/">Login</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/register/">Register</a>
+        </li>
+        <li class="nav-item ">
+          <a href="/logout/"><button type=submit class="btn text-light " >Logout</button></a>
+        </li>
+        </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search Food" name="search">
+        <button class="btn btn-outline-light " type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+<form class="col-6 mx-auto card p-3 bg-light mt-5" method="post" >
+{% csrf_token %}
+  <div class="mb-3">
+  <h4 class="text-center "> Login  </h4>
+{% if messages %}
+{{ message.tags }}
+<div class="alert alert-info" role="alert">
+  {% for message in messages %}
+  {{ message }}
+  {% endfor %}
+</div>
+{% endif %}
+
+
+    <label for="Enter user id" class="form-label">User Name</label>
+    <input type="text" class="form-control" name="username" aria-describedby="emailHelp">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" name="password">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+  <p>Don't have an account <a href="/register/">REGISTER<a></p>
+</form>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}
+<title>RECIPE|VIEW</title>
+{% endblock %}
+{% block body %}
+<body background="/static/pictures/7.jpg">
+<nav class="navbar navbar-expand-lg  " style=" background-color:#9b111e; ">
+  <div class="container-fluid">
+    <a class="navbar-brand text-light" href="#">Foodies</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/add/">Add</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link text-light" href="/view/">View</a>
+        </li>
+        <li class="nav-item ">
+          <a href="/logout/"><button type=submit class="btn text-light " >Logout</button></a>
+        </li>
+        </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search Food" name="search">
+        <button class="btn btn-outline-light " type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+
+
+<div >
+  <table class="container table border my-3 table-responsive table-striped-columns table-light table-striped  table-hover" style="background-color:#9b111e;" >
+  
+  <thead>
+    <tr style="background-color:#fafad2;">
+      <th scope="col">S.no.</th>
+      <th scope="col">Name</th>
+      <th scope="col">Recipe</th>
+      <th scope="col">Image</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for recipe in recipes %}
+  
+    <tr>
+      <th scope="row">{{forloop.counter}}</th>
+      <td>{{recipe.recipe_name}}</td>
+      <td>{{recipe.recipe_description}}</td>
+      <td>
+      <image src="/media/{{recipe.recipe_image}}"  style="height:200px ;width:200px "></td>    
+      <td><a href="/delete/{{recipe.id}}/"><button type=submit class=" btn my-5" style="color:#b22222">DELETE</button></a>
+      <a href="/update/{{recipe.id}}/"><button type=submit class="btn " style="color:#20b2aa">UPDATE</button></a></td>
+      </tr>
+   {% endfor %}
+  </tbody>
+  </table>
+     
+</div>
+
+</body>
+{% endblock %}
+
